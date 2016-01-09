@@ -14,7 +14,7 @@ apprenez comment
 
 <h1 class="page-header">
   <small>Découvrez les cours disponibles</small>
-  <%= link_to 'Ajouter un nouveau cours', new_course_path, class: "btn btn-primary pull-right" if current_user.is_admin %>
+  <%= link_to 'Ajouter un nouveau cours', new_course_path, class: "btn btn-primary pull-right" if current_user && current_user.is_admin %>
 </h1>
 
 
