@@ -114,7 +114,7 @@ section {
 }
 
 .page_title {
-  width: 90%;
+  width: 80%;
   position: absolute;
   top: 100px;
   color: white;
@@ -167,6 +167,22 @@ section {
   padding-left: 100px;
   padding-right: 100px;
   background-color: black;
+}
+
+.fa-success {
+  color: #5cb85c;
+}
+
+.fa-warning {
+  color: #f0ad4e;
+}
+
+.fa-danger {
+  color: #d9534f;
+}
+
+.fa-primary {
+  color: #16a085;
 }
 
 

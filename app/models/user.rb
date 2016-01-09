@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   
-	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>", mini: "50x50>" }, default_url: "/images/:style/missing.png"
+	has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#", mini: "50x50#" }, default_url: "/images/:style/missing.png"
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
 
@@ -16,6 +16,32 @@ class User < ActiveRecord::Base
     end
 
   def has_achieved?(lesson)
-    achievements.where(:achievable_type => "Lesson", :achievable_type => lesson.id)
+    achievements.where(:achievable_type => "Lesson", :achievable_id=> lesson.id).any?
+  end
+
+  def achieved_lessons_count(course)
+    achieved_lessons_count = 0
+    course.lessons.each do |lesson|
+      if has_achieved?(lesson)
+        achieved_lessons_count += 1
+      end
+    end
+    achieved_lessons_count
+  end
+
+  def progress(course)
+   
+      achieved_lessons_count(course) * 100 / course.lessons.count
+  
+  end
+
+  def has_completed?(course)
+ 
+      achieved_lessons_count(course) == course.lessons.count
+    
+  end
+
+  def is_admin
+    email == "lol@lol.com"
   end
 end

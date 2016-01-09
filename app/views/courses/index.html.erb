@@ -14,7 +14,7 @@ apprenez comment
 
 <h1 class="page-header">
   <small>Découvrez les cours disponibles</small>
-  <%= link_to 'Ajouter un nouveau cours', new_course_path, class: "btn btn-primary pull-right" %>
+  <%= link_to 'Ajouter un nouveau cours', new_course_path, class: "btn btn-primary pull-right" if current_user.is_admin %>
 </h1>
 
 
@@ -23,7 +23,7 @@ apprenez comment
 
     <div class="col-md-4 col-sm-6">
       <div class="panel panel-default">
-        <%= image_tag('computer_table.jpg') %>
+        <%= image_tag course.illustration.url(:medium) %>
         <div class="panel-body">
           <b><%= link_to course.name, course %></b>
           <hr>

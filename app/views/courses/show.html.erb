@@ -10,7 +10,7 @@
 <!-- si inscrit -->
 <h2 class="page-header">
 	Leçons
-	<%= link_to "Ajouter une nouvelle leçon", new_lesson_path, class: "btn btn-primary pull-right" %>
+	<%= link_to "Ajouter une nouvelle leçon", new_lesson_path, class: "btn btn-primary pull-right" if current_user.is_admin %>
 </h2>
 
 <div class="col-md-10 col-md-offset-1">
@@ -18,7 +18,11 @@
 <ul class="list-group">
 <% @lessons.each do |lesson| %>
 <li class="list-group-item">
-	<h4><%= lesson.nr %> - <%= link_to lesson.name, lesson %></h4>
+	<h4><%= lesson.nr %> - <%= link_to lesson.name, lesson %>
+		<% if current_user.has_achieved?(lesson) %>
+		<i class="fa fa-check-circle-o fa-primary pull-right"></i>
+		<% end %>
+	</h4>
 </li>
 <% end %>
 </ul>

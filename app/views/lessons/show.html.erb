@@ -5,19 +5,25 @@
 </div>
 
 <h1 class="page-header text-center">
+  <div class="row">
+    <div class="col-md-3">
   <!-- previous lesson -->
   <%= link_to "< Leçon précédente", lesson_path(@lesson.previous), class: "btn btn-link pull-left" if @lesson.previous %>
+</div>
 
   <!-- title -->
+  <div class="col-md-6">
 
   <%= @lesson.name %>
-
+</div>
   <!-- achived and next -->
-
+<div class="col-md-3">
   <% if current_user.has_achieved?(@lesson) %>
+
 
     <%= link_to "Leçon suivante >", lesson_path(@lesson.next), class: "btn btn-link pull-right" if @lesson.next %>
   <% else %>
+
     <%= simple_form_for(@achievement) do |f| %>
       <%= f.error_notification %>
 
@@ -26,17 +32,21 @@
 
         <% if @lesson.next %>
         <%= f.submit "J'ai compris ! >", class: "btn btn-primary pull-right" %>
+        <% else %>
+        <%= f.submit "J'ai compris !", class: "btn btn-primary pull-right" %>
         <% end %>
-      </div>
+      
     <% end %>
   <% end %>
+</div>
+</div>
 </h1>
 
 <div class="video_background">
   
-<div class="embed-responsive embed-responsive-16by9">
-<%= @lesson.video_html %>
-</div>
+  <div class="embed-responsive embed-responsive-16by9">
+  <%= @lesson.video_html %>
+  </div>
 
 </div>
 
@@ -53,8 +63,11 @@
 
         <% if @lesson.next %>
         <%= f.submit "J'ai compris ! Je passe à la leçon suivante >", class: "btn btn-primary btn-lg btn-block" %>
+        <% else %>
+        <%= f.submit "J'ai compris !", class: "btn btn-primary btn-lg btn-block" %>
+
         <% end %>
-      </div>
+      
     <% end %>
   <% end %>
   </div>
