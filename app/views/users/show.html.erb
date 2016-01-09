@@ -19,7 +19,7 @@
 
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<p><%= markdown(@user.bio) %></p>
+			<p><%= markdown(@user.bio) if @user.bio %></p>
 <hr>
 			<% if current_user == @user %>
 
