@@ -1,29 +1,110 @@
-<p id="notice"><%= notice %></p>
+<div class="course_title">
+  <div class="text-right">
+    Le cours : <%= link_to @lesson.course.name, course_path(@lesson.course) %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
+<h1 class="page-header text-center">
+  <!-- previous lesson -->
+  <%= link_to "< Leçon précédente", lesson_path(@lesson.previous), class: "btn btn-link pull-left" if @lesson.previous %>
+
+  <!-- title -->
+
   <%= @lesson.name %>
-</p>
 
-<p>
+  <!-- achived and next -->
+
+  <% if current_user.has_achieved?(@lesson) %>
+
+    <%= link_to "Leçon suivante >", lesson_path(@lesson.next), class: "btn btn-link pull-right" if @lesson.next %>
+  <% else %>
+    <%= simple_form_for(@achievement) do |f| %>
+      <%= f.error_notification %>
+
+        <%= f.hidden_field :achievable_type, value: "Lesson" %>
+        <%= f.hidden_field :achievable_id, value: @lesson.id %>
+
+        <% if @lesson.next %>
+        <%= f.submit "J'ai compris ! >", class: "btn btn-primary pull-right" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</h1>
+
+<div class="video_background">
+  
+<div class="embed-responsive embed-responsive-16by9">
+<%= @lesson.video_html %>
+</div>
+
+</div>
+
+<div class="text-center">
+  <!-- achived and next -->
+
+  <% unless current_user.has_achieved?(@lesson) %>
+
+    <%= simple_form_for(@achievement) do |f| %>
+      <%= f.error_notification %>
+
+        <%= f.hidden_field :achievable_type, value: "Lesson" %>
+        <%= f.hidden_field :achievable_id, value: @lesson.id %>
+
+        <% if @lesson.next %>
+        <%= f.submit "J'ai compris ! Je passe à la leçon suivante >", class: "btn btn-primary btn-lg btn-block" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+
+
+<!--<p>
   <strong>Description:</strong>
   <%= @lesson.description %>
-</p>
+</p> -->
 
+<h2 class="page-header">
+  Notes
+  
+</h2>
+
+<% @lesson.notes.each do |note| %>
 <p>
-  <strong>Nr:</strong>
-  <%= @lesson.nr %>
+  <%= markdown(note.content) %>
 </p>
+<% end %>
 
-<p>
-  <strong>Video:</strong>
-  <%= @lesson.video %>
-</p>
+<hr>
+<div class="col-md-8 col-md-offset-2">
+<div class="panel panel-default">
+  <div class="panel-body">
 
-<p>
-  <strong>Course:</strong>
-  <%= @lesson.course_id %>
-</p>
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+<%= simple_form_for(@note) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :content,  :label => "Ajouter une note", :input_html => {:rows => 5, :placeholder => "Ajouter le contenu de la note", class: "form-control", :data => {:provide => "markdown"} } %>
+
+    <%= f.hidden_field :lesson_id, value: @lesson.id %>
+  </div>
+
+
+
+  <div class="form-actions">
+    <%= f.submit "Ajouter la note", class: "btn btn-primary btn-lg btn-block" %>
+  </div>
+</div>
+</div>
+<% end %>
+
+
+</div>
+
+
+
+  
+
+

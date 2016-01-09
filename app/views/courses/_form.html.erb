@@ -2,9 +2,20 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :price %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :price %>
+      </div>
+  </div>
+  <%= f.input :illustration, as: :file %>
+    <%= f.input :description, :input_html => {:rows => 5, :placeholder => "Ajouter la description du cours", class: "form-control", :data => {:provide => "markdown"} } %>
+    <%= f.input :target, :input_html => {:rows => 5, :placeholder => "Ce cours est pour vous si", class: "form-control", :data => {:provide => "markdown"} } %>
+    <%= f.input :outcome, :input_html => {:rows => 5, :placeholder => "A l'issue de ce cours, vous serez capable de", class: "form-control", :data => {:provide => "markdown"} } %>
+    <%= f.input :prerequis, :input_html => {:rows => 5, :placeholder => "Ajouter les pré-requis", class: "form-control", :data => {:provide => "markdown"} } %>
+    
   </div>
 
   <div class="form-actions">

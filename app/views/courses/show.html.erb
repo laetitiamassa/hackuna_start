@@ -1,19 +1,115 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<%= content_for :image do %>
+<%= image_tag @course.illustration.url(:head) %>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+<%= content_for :page_title do %>
+<%= @course.name %>
+<% end %>
+<% if user_signed_in? %>
+<!-- si inscrit -->
+<h2 class="page-header">
+	Leçons
+	<%= link_to "Ajouter une nouvelle leçon", new_lesson_path, class: "btn btn-primary pull-right" %>
+</h2>
 
-<p>
-  <strong>Price:</strong>
-  <%= @course.price %>
-</p>
+<div class="col-md-10 col-md-offset-1">
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<ul class="list-group">
+<% @lessons.each do |lesson| %>
+<li class="list-group-item">
+	<h4><%= lesson.nr %> - <%= link_to lesson.name, lesson %></h4>
+</li>
+<% end %>
+</ul>
+</div>
+
+
+
+
+<% else %>
+
+<!-- si pas inscrit -->
+
+
+
+<div class="row with-top-image">
+	<div class="col-md-8">
+		
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p class="lead">
+				  <%= @course.description %>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+
+				<h1 class="text-center"><small>Ce cours est pour vous si</small></h1>
+				<p>
+				  <%= markdown(@course.target) %>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+
+				<h1 class="text-center"><small>A l'issue de ce cours, vous serez capable de</small></h1>
+				<p>
+				  <%= markdown(@course.outcome) %>
+				</p>
+			</div>
+		</div>
+
+		<h1>
+			<%= link_to "S'inscrire à ce cours", "#", class: "btn btn-success btn-lg btn-block" %>
+		</h1>
+
+
+
+
+	</div>
+
+
+
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-body">
+
+				<h1 class="text-center"><i>
+					<small>Accès à vie : <%= @course.price %> €</small>
+				</i></h1>
+
+
+				<%= link_to "S'inscrire", "#", class: "btn btn-success btn-lg btn-block" %>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3 class="text-center"><small>Pré-requis</small></h3>
+				<p>
+				  <%= markdown(@course.prerequis) %>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3 class="text-center"><small>Prof</small></h3>
+				<p>
+				  <%= @course.teacher.full_name %>
+				</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<% end %>
+
+
+

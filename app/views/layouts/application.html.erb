@@ -7,68 +7,84 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
-    <!--<header>
-      <%= render 'layouts/navigation' %>
-    </header>-->
     <main role="main">
 
+        <% if user_signed_in? %>
 
 
-
-
-
-       
+  
       <div id="wrapper">
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
+                
+                    <%= link_to "Hackuna", root_path %>
+                
+            </li>
+            <li>
+                <%= link_to "Dashboard", user_path(current_user) if current_user %>
+            </li>
+            <% Course.all.each do |course| %>
+                <li><%= link_to truncate(course.name, length: 20), course %></li>
+            <% end %>
+            <hr>
+            <li>
+                <a href="#">Inviter des amis</a>
+            </li>
+            <li>
+                <a href="#">Poser une question</a>
+            </li>
+            <hr>
+            <li>
+                <a href="#"><%= link_to "A propos", about_path %></a>
+            </li>
+            <li>
                 <a href="#">
-                    Start Bootstrap
+                    <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method=>'delete' %></li>
                 </a>
             </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-                <a href="#">Shortcuts</a>
-            </li>
-            <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
+            <hr>
+            <div class="text-center">
+                <a href="#">
+                    <i class="fa fa-facebook fa-lg fa-inverse"></i>
+                </a> | 
+                <a href="#">
+                    <i class="fa fa-twitter fa-lg fa-inverse"></i>
+                </a> | 
+                <a href="#">
+                    <i class="fa fa-envelope fa-lg fa-inverse"></i>
+                </a>
+            </div>
         </ul>
+
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-
+      <div class="top-image">
+        <%= yield :image %>
+        <div class="page_title text-center"><%= yield :page_title %></div>
+        <a href="#menu-toggle" class="btn btn-primary btn-sm" id="menu-toggle">
+          <i class="fa fa-bars fa-lg"></i>
+        </a>
+      </div>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
+            
                     
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     
+<br>
                     <%= render 'layouts/messages' %>
                     <%= yield %>
-                </div>
+                 
             </div>
-        </div>
+        
     </div>
     <!-- /#page-content-wrapper -->
 
@@ -82,6 +98,25 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 </script>
+
+<% else %>
+    <%= render "layouts/navigation" %>
+    <div class="top-image-unlogged">
+        <%= yield :image %>
+        <div class="page_title_unlogged text-center">
+            <%= yield :page_title %>
+        </div>
+    </div>
+    
+    <div class="container"> 
+    <br>    
+        <%= render 'layouts/messages' %>
+        <%= yield %>         
+    </div>
+        
+    
+
+<% end %>
     </main>
   </body>
 </html>

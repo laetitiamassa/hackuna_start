@@ -1,6 +1,24 @@
+/*$brand-primary: #2c3e50;
+$brand-info: #d35400; 
+$navbar-default-brand-color: #d35400;
+$navbar-default-link-color: #d35400;
+$navbar-height:             50px;
+$navbar-inverse-bg: #2c3e50;
+$navbar-default-bg: white;
+$navbar-inverse-link-color: #d35400;*/
+
+$navbar-default-bg: white;
+$navbar-height: 50px;
+$navbar-default-brand-color: #16a085;
+
+$brand-primary: #16a085;
+
+
+
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 // make all images responsive by default
 img {
@@ -10,7 +28,20 @@ img {
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
+  padding-top: 10px;
   }
+
+.homebrand {
+  font-size: 3em;
+ 
+  /*color: #d35400;
+  a {
+    color: #d35400;
+  }
+  a:visited {
+    color: #d35400;
+  }*/
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
@@ -81,3 +112,61 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+.page_title {
+  width: 90%;
+  position: absolute;
+  top: 100px;
+  color: white;
+  font-size: 5em;
+  line-height: 80px;
+  text-align: center;
+  text-shadow: 2px 4px #000000;
+  border-bottom: white;
+}
+
+.page_title_unlogged {
+  width: 100%;
+  position: absolute;
+  top: 150px;
+  color: white;
+  font-size: 5em;
+  line-height: 80px;
+  text-align: center;
+  text-shadow: 2px 4px #000000;
+  border-bottom: white;
+}
+
+.top-image {
+  /*margin-bottom: 20px;*/
+}
+
+.top-image-unlogged {
+  margin-top: 50px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.with-top-image {
+  margin-top: 20px;
+}
+
+.no-top-image {
+  margin-top: 60px;
+}
+
+.course_title {
+  margin-top: 20px;
+}
+
+.video_background {
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-color: black;
+}
+
+

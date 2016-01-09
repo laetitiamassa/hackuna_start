@@ -1,22 +1,33 @@
+<%= content_for :image do %>
+<%= image_tag "computer_table.jpg" %>
+<% end %>
+
+<%= content_for :page_title do %>
+apprenez comment
+<br>GENERER DES REVENUS 
+<br>sans capital de départ
+<% end %>
 
 
 
 
 
-
-
-<h1 class="page-header">Cours Hackuna</h1>
+<h1 class="page-header">
+  <small>Découvrez les cours disponibles</small>
+  <%= link_to 'Ajouter un nouveau cours', new_course_path, class: "btn btn-primary pull-right" %>
+</h1>
 
 
     <% @courses.each do |course| %>
 
 
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-4 col-sm-6">
       <div class="panel panel-default">
-        <%= image_tag 'computer_table.jpeg' %>
+        <%= image_tag('computer_table.jpg') %>
         <div class="panel-body">
-          <p class="lead"><%= link_to course.name, course %></p>
-          <p><%= course.description %></p>
+          <b><%= link_to course.name, course %></b>
+          <hr>
+          <%= course.description %>
         </div>
         <div class="panel-footer">
           <%= course.price %> €
@@ -33,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+

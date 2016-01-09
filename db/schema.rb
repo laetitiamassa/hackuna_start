@@ -11,14 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108152635) do
+ActiveRecord::Schema.define(version: 20160109201543) do
+
+  create_table "achievements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "achievable_type"
+    t.integer  "achievable_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.decimal  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "teacher_id"
+    t.text     "target"
+    t.text     "prerequis"
+    t.text     "outcome"
+    t.string   "illustration_file_name"
+    t.string   "illustration_content_type"
+    t.integer  "illustration_file_size"
+    t.datetime "illustration_updated_at"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -52,6 +68,17 @@ ActiveRecord::Schema.define(version: 20160108152635) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.text     "bio"
+    t.string   "github"
+    t.string   "website"
+    t.string   "baseline"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

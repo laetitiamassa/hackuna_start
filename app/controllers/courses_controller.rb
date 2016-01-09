@@ -10,11 +10,12 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @lessons = @course.lessons.order("nr ASC")
   end
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = current_user.courses.build
   end
 
   # GET /courses/1/edit
@@ -24,7 +25,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = current_user.courses.build(course_params)
 
     respond_to do |format|
       if @course.save
@@ -69,6 +70,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :price)
+      params.require(:course).permit(:name, :description, :price, :teacher_id, :target, :outcome, :prerequis, :illustration)
     end
 end

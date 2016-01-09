@@ -2,14 +2,25 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :nr %>
-    <%= f.input :video %>
-    <%= f.input :course_id %>
+    <%= f.collection_select :course_id, Course.all, :id, :name, {prompt: false}, {class: "form-control input-lg"} %>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.text_field :nr, :placeholder => "numéro", class: "form-control input-lg" %>
+      </div>
+      <div class="col-md-9">
+        <%= f.text_field :name, :placeholder => "Nom de la leçon", class: "form-control input-lg" %>
+      </div>
   </div>
-
+  <br>
+    <%= f.text_area :description, :placeholder => "Description de la leçon", class: "form-control input-lg" %>
+    <br>
+    
+    <%= f.text_field :video, :placeholder => "lien vidéo de la leçon", class: "form-control input-lg" %>
+    
+  </div>
+<br>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit "Ajouter la leçon", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>

@@ -1,0 +1,28 @@
+<div class="no-top-image col-md-8 col-md-offset-2">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h2 class="page-header text-center">Modifier mon profil</h2>
+
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :avatar, as: :file %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :username %>
+    <%= f.input :baseline %>
+    <%= f.input :bio %>
+    <%= f.input :github%>
+    <%= f.input :website %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Modifier", class: "btn btn-default" %>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>
