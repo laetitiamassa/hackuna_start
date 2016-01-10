@@ -8,16 +8,19 @@ $navbar-default-bg: white;
 $navbar-inverse-link-color: #d35400;*/
 
 $navbar-default-bg: white;
-$navbar-height: 50px;
-$navbar-default-brand-color: #16a085;
+$navbar-height: 70px;
 
+$navbar-default-brand-color: #16a085;
+$navbar-default-link-color: #16a085;
 $brand-primary: #16a085;
+$brand-info: #F1C40F;
 
 
 
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Megrim);
 
 
 // make all images responsive by default
@@ -28,7 +31,7 @@ img {
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
-  padding-top: 10px;
+  
   }
 
 .homebrand {
@@ -113,6 +116,71 @@ section {
   @extend .btn-xs;
 }
 
+/*homepage */
+.homebg {
+  margin-top: 70px;
+  margin-bottom: 0px;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  color: #f8f8f8; 
+  background-color: black;
+  background-image: image-url('computer_table.jpeg');
+  min-height: 545px;
+  background-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.homecatch {
+  padding-top: 20px;
+  font-size: 4em;
+  line-height: 60px;
+  text-shadow: 0 2px 4px #000000;
+}
+
+.homecatchbig {
+  padding-bottom: 30px;
+  font-size: 5em;
+  line-height: 70px;
+  text-shadow: 0 2px 4px #000000;
+}
+
+.signup_form {
+  padding: 20px;
+  background-color: rgba(0,0,0, 0.4);
+  border-radius: 6px;
+}
+
+.footer-nav {
+  border-top-color: #16a085;
+  border-top-width: 1px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  padding-bottom: 10px;
+}
+
+.hkncolor {
+  color: #16a085;
+  a:visited {
+    color: #16a085;
+  }
+}
+
+.hackuna {
+font-family: 'Megrim', cursive;
+font-size: 15em;
+}
+
+.hackunafont {
+  font-family: 'Megrim', cursive;
+  color: #16a085;
+}
+
 .page_title {
   width: 80%;
   position: absolute;
@@ -183,6 +251,10 @@ section {
 
 .fa-primary {
   color: #16a085;
+}
+
+.wait-card {
+  margin-top: 100px;
 }
 
 

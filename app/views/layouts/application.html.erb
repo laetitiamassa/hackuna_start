@@ -11,10 +11,10 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
-    <main role="main">
+    
 
         <% if user_signed_in? %>
-
+<main role="main">
 
   
       <div id="wrapper">
@@ -28,11 +28,13 @@
                 
             </li>
             <li>
-                <%= link_to "Dashboard", user_path(current_user) if current_user %>
+                <%= link_to "Votre compte", user_path(current_user) if current_user %>
             </li>
+            <!--
             <% Course.all.each do |course| %>
                 <li><%= link_to truncate(course.name, length: 20), course %></li>
             <% end %>
+            
             <hr>
             <li>
                 <a href="#">Inviter des amis</a>
@@ -43,7 +45,7 @@
             <hr>
             <li>
                 <a href="#"><%= link_to "A propos", about_path %></a>
-            </li>
+            </li>-->
             <li>
                 <a href="#">
                     <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method=>'delete' %></li>
@@ -98,7 +100,7 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 </script>
-
+</main>
 <% else %>
     <%= render "layouts/navigation" %>
     <div class="top-image-unlogged">
@@ -108,15 +110,21 @@ $("#menu-toggle").click(function(e) {
         </div>
     </div>
     
-    <div class="container"> 
-    <br>    
+     
+     
         <%= render 'layouts/messages' %>
-        <%= yield %>         
-    </div>
+        <%= yield %> 
+
+    
         
     
 
 <% end %>
-    </main>
+    
   </body>
+  <% unless user_signed_in? %>
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
+  <% end %>
 </html>

@@ -1,1 +1,36 @@
-home.html.erb
+<div class="homebg">
+	<%= render 'layouts/messages' %>
+	<div class="row">
+		<div class="homecatchbig"><b>Générez des revenus</b>
+			
+		</div>
+		<div class="col-md-8">
+	<div class="homecatch">
+	
+		Apprenez à lancer un produit
+			<br>
+		<br><b>Sans capital.
+		<br>En un weekend.</b></div>
+</div>
+			
+		<div class="signup_form col-md-3">
+			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
+
+		    <div class="form-group">
+		      
+		      <%= f.email_field :email, :placeholder => "email", class: 'form-control input-lg' %>
+		    </div>
+		    <div class="form-group">
+		     
+		      <%= f.password_field :password, :placeholder => "mot de passe", class: 'form-control input-lg' %>
+		    </div>
+		    <div class="form-group">
+		     
+		      <%= f.password_field :password_confirmation, :placeholder => "confirmer mot de passe", class: 'form-control input-lg' %>
+		    </div>
+		    
+		     <%= f.submit 'Inscription', :class => 'btn btn-primary btn-lg btn-block' %>
+		  <% end %>
+		</div>
+		</div>
+</div>
