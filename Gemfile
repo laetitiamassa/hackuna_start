@@ -22,10 +22,14 @@ gem 'devise'
 gem 'high_voltage'
 gem 'simple_form'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
 
 gem 'rails-bootstrap-markdown'
 gem 'redcarpet', '~> 3.1'
 gem "auto_html", '~> 1.6.4'
+
+
+
 
 group :development do
   gem 'better_errors'
