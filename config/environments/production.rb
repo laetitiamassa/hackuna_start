@@ -61,7 +61,7 @@ Rails.application.configure do
   # config.action_controller.asset_host = 'http://assets.example.com'
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'start.hackuna.org' }
+  config.action_mailer.default_url_options = { :host => 'hackuna.org' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -74,7 +74,7 @@ Rails.application.configure do
     :user_name => ENV['MANDRILL_USERNAME'],
     :password  => ENV['MANDRILL_API_KEY'], # SMTP password is any valid API key
     :authentication => 'login',
-    :domain => 'start.hackuna.org'
+    :domain => 'hackuna.org'
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
