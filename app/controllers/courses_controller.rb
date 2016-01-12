@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   def show
     @lessons = @course.lessons.order("nr ASC")
     @course = Course.find_by!(id: params[:id])
-    @subscription = @course.subscriptions.build(:subscriber_id => current_user.id)
+    @subscription = @course.subscriptions.build(:subscriber_id => current_user.id) if current_user
   end
 
   # GET /courses/new

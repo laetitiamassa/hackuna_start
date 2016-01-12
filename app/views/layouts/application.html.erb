@@ -72,7 +72,11 @@
     <div id="page-content-wrapper">
       <div class="top-image">
         <%= yield :image %>
-        <div class="page_title text-center"><%= yield :page_title %></div>
+        <div class="page_title">
+           
+                    <%= yield :page_title %>
+                
+        </div>
         <a href="#menu-toggle" class="btn btn-primary btn-sm" id="menu-toggle">
           <i class="fa fa-bars fa-lg"></i>
         </a>
@@ -103,28 +107,27 @@ $("#menu-toggle").click(function(e) {
 </main>
 <% else %>
     <%= render "layouts/navigation" %>
+    
     <div class="top-image-unlogged">
         <%= yield :image %>
-        <div class="page_title_unlogged text-center">
+        <div class="page_title_unlogged">
             <%= yield :page_title %>
         </div>
     </div>
     
-     
-     
-        <%= render 'layouts/messages' %>
         <%= yield %> 
-
-    
-        
     
 
 <% end %>
+
+  
     
-  </body>
-  <% unless user_signed_in? %>
-  <footer>
-    <%= render 'layouts/footer' %>
-  </footer>
+</body>
+
+<% unless user_signed_in? %>
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
   <% end %>
+
 </html>

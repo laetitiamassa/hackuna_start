@@ -8,8 +8,14 @@
 <br><small><%= @course.short_name %></small>
 <% end %>
 
+<% unless user_signed_in? %>
+<div class="row">
+
+  
+<% end %>
+
 <div class="col-md-10 col-md-offset-1">
-<% if current_user.is_student?(@course) %>
+<% if current_user && current_user.is_student?(@course) %>
 <!-- si inscrit -->
 <h2 class="page-header">
 	Leçons
@@ -89,7 +95,9 @@
 					</h3>
 				<hr>
 
+				<% if user_signed_in? %>
 				<div class="text-center">
+
 					<%= form_tag buy_path(id: @course.id) do %>
 	 
 					    <% if flash[:error].present? %>
@@ -111,6 +119,11 @@
 					    </script>
 					<% end %>
 				</div>
+				<% else %>
+				
+				<%= link_to "Se connecter pour s'abonner", new_user_registration_path, class: "btn btn-primary btn-lg btn-block whitey" %>
+			
+				<% end %>
 			</li>
 		</ul>
 
@@ -121,7 +134,7 @@
 						</div>
 						
 						
-						  <%= markdown(@course.prerequis) %>
+						 <br> <%= markdown(@course.prerequis) %>
 						
 					</li>
 				</ul>
@@ -149,6 +162,10 @@
 
 <% end %>
 </div>
+
+<% unless user_signed_in? %>
+</div>
+<% end %>
 
 
 

@@ -1,13 +1,20 @@
 <%= content_for :image do %>
-  <%= image_tag "computer_table.jpg" %>
+  <%= image_tag "computer_table_courses.jpg" %>
 <% end %>
 
 <%= content_for :page_title do %>
-  apprenez comment
+  apprenez à
   <br>GENERER DES REVENUS 
   <br>sans capital de départ
 <% end %>
 
+<% unless user_signed_in? %>
+<div class="row">
+
+  
+<% end %>
+
+<div class="col-lg-10 col-lg-offset-1">
 
 <h1 class="page-header">
   <small>Découvrez les cours disponibles</small>
@@ -36,7 +43,7 @@
 
           <% if course.is_released %>
              
-            <% if current_user.is_student?(course) %>
+            <% if current_user && current_user.is_student?(course) %>
             
               <div class="hkncolor">
                 <%= link_to "Poursuivre le cours", course, class: "btn btn-default btn-lg btn-block"  %>
@@ -57,6 +64,12 @@
     
 <% end %>
 
+</div>
 
+<% unless user_signed_in? %>
+</div>
+
+  
+<% end %>
 
 
