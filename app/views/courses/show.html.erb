@@ -52,7 +52,8 @@
 		
 		<ul class="list-group">
 			<li class="list-group-item">
-				  <p class="lead text-center"><%= @course.description %></p>
+				  <p class="text-center">
+				  	<%= markdown(@course.description) %></p>
 			</li>
 		</ul>
 
