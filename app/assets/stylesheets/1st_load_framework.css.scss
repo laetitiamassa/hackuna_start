@@ -17,6 +17,7 @@ $brand-info: #f1c40f;
 
 
 
+
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -269,6 +270,10 @@ font-size: 15em;
 .panel-footer.panel-custom {
     background: #16a085;
     color: white;
+}
+
+.list-group-item-info.custom {
+  background-color: #f1c40f;
 }
 
 

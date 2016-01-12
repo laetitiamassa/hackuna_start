@@ -5,8 +5,10 @@
 
 <%= content_for :page_title do %>
 <%= @course.name %>
+<br><small><%= @course.short_name %></small>
 <% end %>
 
+<div class="col-md-10 col-md-offset-1">
 <% if current_user.is_student?(@course) %>
 <!-- si inscrit -->
 <h2 class="page-header">
@@ -42,40 +44,33 @@
 <div class="row with-top-image">
 	<div class="col-md-8">
 		
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<p class="lead">
-				  <%= @course.description %>
-				</p>
-			</div>
-		</div>
-
-		<div class="panel panel-default">
-			<div class="panel-body">
-
-				<h1 class="text-center"><small>Ce cours est pour vous si</small></h1>
-				<p>
-				  <%= markdown(@course.target) %>
-				</p>
-			</div>
-		</div>
-
-		<div class="panel panel-default">
-			<div class="panel-body">
-
-				<h1 class="text-center"><small>A l'issue de ce cours, vous serez capable de</small></h1>
-				<p>
-				  <%= markdown(@course.outcome) %>
-				</p>
-			</div>
-		</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+				  <p class="lead text-center"><%= @course.description %></p>
+			</li>
+		</ul>
 
 		
+				<ul class="list-group">
+					<li class="list-group-item">
+						  <h4 class="text-center hkncolor">Ce cours est pour vous si</h4>
+					<hr>
+						  <%= markdown(@course.target) %>
+						
+					</li>
+				</ul>
+			
+				<ul class="list-group">
+					<li class="list-group-item">
+						 <h4 class="text-center hkncolor">A l'issue de ce cours, vous devriez être capable de</h4>
+					<hr>
+						
+						  <%= markdown(@course.outcome) %>
+						
+					</li>
+				</ul>
+			
 
-		<h1>
-			<%= link_to "S'inscrire à ce cours", course_path(@course, anchor: "payment"), class: "btn btn-success btn-lg btn-block" %>
-
-		</h1>
 
 
 
@@ -85,64 +80,75 @@
 
 
 	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-body" id="payment">
+		<ul class="list-group">
+			<li class="list-group-item list-group-item-warning custom text-center" id="payment">
 
-				<h1 class="text-center"><i>
-					<small>Accès à vie : <%= @course.price %> €</small>
-				</i></h1>
+				
+					<h3 class="text-center">Accès à vie 
+						<small><br><i><%= @course.price %></i> € ttc seulement</small>
+					</h3>
 				<hr>
 
 				<div class="text-center">
-				<%= form_tag buy_path(id: @course.id) do %>
- 
-				    <% if flash[:error].present? %>
-				      <div id="error_explanation">
-				        <p><%= flash[:error] %></p>
-				      </div>
-				    <% end %>
-				    
-				  
+					<%= form_tag buy_path(id: @course.id) do %>
+	 
+					    <% if flash[:error].present? %>
+					      <div id="error_explanation">
+					        <p><%= flash[:error] %></p>
+					      </div>
+					    <% end %>
+					    
+					  
 
-				  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-				          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-				          data-email= "<%= current_user.email %>"
-				    	  data-name="Hackuna"
-				          data-description="<%= @course.short_name %>"
-				          data-currency="eur"
-				          data-amount="<%= @course.price*100 %>"
-				          data-locale="auto">
-				    </script>
-				<% end %>
-			</div>
+					  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+					          data-email= "<%= current_user.email %>"
+					    	  data-name="Hackuna"
+					          data-description="<%= @course.short_name %>"
+					          data-currency="eur"
+					          data-amount="<%= @course.price*100 %>"
+					          data-locale="auto">
+					    </script>
+					<% end %>
+				</div>
+			</li>
+		</ul>
 
+		<ul class="list-group">
+					<li class="list-group-item list-group-item-info">
+						<div class="text-right">
+						 <strong><small>Pré-requis</small></strong>
+						</div>
+						
+						
+						  <%= markdown(@course.prerequis) %>
+						
+					</li>
+				</ul>
 
-				<!--<%= link_to "S'inscrire", "#", class: "btn btn-success btn-lg btn-block" %>-->
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<h3 class="text-center"><small>Pré-requis</small></h3>
-				<p>
-				  <%= markdown(@course.prerequis) %>
-				</p>
-			</div>
-		</div>
-
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<h3 class="text-center"><small>Prof</small></h3>
-				<p>
-				  <%= @course.teacher.full_name if @course.teacher %>
-				</p>
-			</div>
-		</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+						 <div class="row">
+						 	<div class="col-md-4">
+						 		<%= link_to (image_tag @course.teacher.avatar.url(:medium), class: "img-circle"), user_path(@course.teacher) if @course.teacher %>
+						 	</div>
+						 	<div class="col-md-8">
+						 		<div class="text-right">
+							 		<strong><small>Instructeur</small></strong>
+							 	</div>
+						 		<br><b><%= link_to @course.teacher.full_name, user_path(@course.teacher)  if @course.teacher %></b>
+						 		<br><i><%= link_to @course.teacher.baseline, user_path(@course.teacher)  if @course.teacher %></i>
+						 	</div>
+						 </div>
+					</li>
+				</ul>
 	</div>
 
 </div>
 
 
 <% end %>
+</div>
 
 
 
