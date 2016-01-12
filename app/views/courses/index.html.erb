@@ -1,15 +1,12 @@
 <%= content_for :image do %>
-<%= image_tag "computer_table.jpg" %>
+  <%= image_tag "computer_table.jpg" %>
 <% end %>
 
 <%= content_for :page_title do %>
-apprenez comment
-<br>GENERER DES REVENUS 
-<br>sans capital de départ
+  apprenez comment
+  <br>GENERER DES REVENUS 
+  <br>sans capital de départ
 <% end %>
-
-
-
 
 
 <h1 class="page-header">
@@ -18,38 +15,48 @@ apprenez comment
 </h1>
 
 
-    <% @courses.each do |course| %>
+
+<% @courses.each do |course| %>
 
 
     <div class="col-md-4 col-sm-6">
       <div class="panel panel-default">
+
         <%= image_tag course.illustration.url(:medium) %>
+
         <div class="panel-body">
+
           <div class="fixed-height">
-          <b><%= link_to course.name, course %></b>
-          <hr>
-          <%= truncate(course.short_description, length: 100) %>
-        </div>
-        <hr>
-          <% if current_user.is_student?(course) %>
-          <div class="hkncolor">
-          <%= link_to "Poursuivre le cours", course, class: "btn btn-default btn-lg btn-block"  %>
-        </div>
+            <b><%= link_to course.name, course %></b>
+            <hr>
+            <%= truncate(course.short_description, length: 100) %>
+          </div>
+
+         <hr>
+
+          <% if course.is_released %>
+             
+            <% if current_user.is_student?(course) %>
+            
+              <div class="hkncolor">
+                <%= link_to "Poursuivre le cours", course, class: "btn btn-default btn-lg btn-block"  %>
+              </div>
+
+            <% else %>
+              <%= link_to "Découvrir ce cours", course, class: "btn btn-info btn-lg btn-block"  %>
+            <% end %>
+        
           <% else %>
-          <%= link_to "Découvrir ce cours", course, class: "btn btn-primary btn-lg btn-block"  %>
+            <%= link_to "Bientôt disponible !", "#", class: "btn btn-primary btn-lg btn-block"  %>
           <% end %>
-          
-        </div>
+        </div> <!-- fin de panel-body --> 
+        
+
       </div>
-    </div>
-
-      
-        
-        
+    </div>    
     
-    <% end %>
+<% end %>
 
 
-<br>
 
 

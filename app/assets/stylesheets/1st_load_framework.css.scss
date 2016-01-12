@@ -13,7 +13,7 @@ $navbar-height: 70px;
 $navbar-default-brand-color: #16a085;
 $navbar-default-link-color: #16a085;
 $brand-primary: #16a085;
-$brand-info: #2980b9;
+$brand-info: #f1c40f;
 
 
 
@@ -264,6 +264,11 @@ font-size: 15em;
 
 .fixed-height {
   min-height: 95px;
+}
+
+.panel-footer.panel-custom {
+    background: #16a085;
+    color: white;
 }
 
 

@@ -2,6 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="list-group-item list-group-item-info">
+      <%= f.input :is_released, label: "Le cours est lancé" %>
+    </div>
+    <br>
     <div class="row">
       <div class="col-md-6">
         <%= f.input :name %>

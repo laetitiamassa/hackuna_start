@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112100434) do
+ActiveRecord::Schema.define(version: 20160112112531) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer  "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160112100434) do
     t.datetime "illustration_updated_at"
     t.string   "short_name"
     t.string   "short_description"
+    t.boolean  "is_released"
   end
 
   create_table "lessons", force: :cascade do |t|
