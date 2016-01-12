@@ -304,4 +304,23 @@ font-size: 15em;
     color: white;
 }
 
+.btn-transparent {
+    background: transparent;
+    border: solid 3px #16a085;
+    box-shadow: none;
+    font-size: 0.9em;
+    font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+
+.btn-transparent:hover {
+    background: #16a085;
+}
+
+.start_button {
+  position: absolute;
+  top: 210px;
+  left: 800px;
+}
+
 

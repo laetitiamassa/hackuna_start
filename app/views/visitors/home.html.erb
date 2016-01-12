@@ -1,36 +1,33 @@
-<div class="homebg">
-	<%= render 'layouts/messages' %>
-	<div class="row">
-		<div class="homecatchbig"><b>Générez des revenus</b>
-			
-		</div>
-		<div class="col-md-8">
-	<div class="homecatch">
-	
-		Apprenez à lancer un produit
-			<br>
-		<br><b>Sans capital.
-		<br>En un weekend.</b></div>
-</div>
-			
-		<div class="signup_form col-md-3">
-			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
 
-		    <div class="form-group">
-		      
-		      <%= f.email_field :email, :placeholder => "email", class: 'form-control input-lg' %>
-		    </div>
-		    <div class="form-group">
-		     
-		      <%= f.password_field :password, :placeholder => "mot de passe", class: 'form-control input-lg' %>
-		    </div>
-		    <div class="form-group">
-		     
-		      <%= f.password_field :password_confirmation, :placeholder => "confirmer mot de passe", class: 'form-control input-lg' %>
-		    </div>
-		    
-		     <%= f.submit 'Inscription', :class => 'btn btn-primary btn-lg btn-block' %>
-		  <% end %>
-		</div>
-		</div>
+	
+	<%= content_for :image do %>
+  <%= image_tag "computer_table_courses.jpg" %>
+<% end %>
+
+<%= content_for :page_title do %>
+
+	
+  <div class="sub_title"><small>Apprenez à</small></div>
+  <div class="main_title">GENERER DES REVENUS</div>
+  <div class="sub_title">sans capital de départ</div>
+
+	
+
+<% end %>
+
+<div class="start_button">
+	  <h1 class="text-right">
+	  	<%= link_to "Commencer maintenant", new_user_registration_path, class: 'btn whitey btn-transparent btn-lg' %>
+	  </h1>
+	</div>
+<%= render 'layouts/messages' %>
+
+<!--<div class="row">
+	<div class="container">
+	bla bla
+</div>-->
+
 </div>
+			
+		
+
