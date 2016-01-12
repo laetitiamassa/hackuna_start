@@ -89,32 +89,32 @@
 </p>
 <% end %>
 
+
+<% if current_user == @lesson.course.teacher %>
 <hr>
 <div class="col-md-8 col-md-offset-2">
-<div class="panel panel-default">
-  <div class="panel-body">
+  <div class="panel panel-default">
+    <div class="panel-body">
 
 
-<%= simple_form_for(@note) do |f| %>
-  <%= f.error_notification %>
+      <%= simple_form_for(@note) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :content,  :label => "Ajouter une note", :input_html => {:rows => 5, :placeholder => "Ajouter le contenu de la note", class: "form-control", :data => {:provide => "markdown"} } %>
+        <div class="form-inputs">
+          <%= f.input :content,  :label => "Ajouter une note", :input_html => {:rows => 5, :placeholder => "Ajouter le contenu de la note", class: "form-control", :data => {:provide => "markdown"} } %>
+          <%= f.hidden_field :lesson_id, value: @lesson.id %>
+        </div>
 
-    <%= f.hidden_field :lesson_id, value: @lesson.id %>
-  </div>
+        <div class="form-actions">
+          <%= f.submit "Ajouter la note", class: "btn btn-primary btn-lg btn-block" %>
+        </div>
 
-
-
-  <div class="form-actions">
-    <%= f.submit "Ajouter la note", class: "btn btn-primary btn-lg btn-block" %>
+      <% end %>
+    </div>
   </div>
 </div>
-</div>
+
 <% end %>
-
-
-</div>
 
 
 
