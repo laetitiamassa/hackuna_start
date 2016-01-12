@@ -13,7 +13,7 @@ $navbar-height: 70px;
 $navbar-default-brand-color: #16a085;
 $navbar-default-link-color: #16a085;
 $brand-primary: #16a085;
-$brand-info: #F1C40F;
+$brand-info: #2980b9;
 
 
 
@@ -260,6 +260,10 @@ font-size: 15em;
 
 .wait-card {
   margin-top: 70px;
+}
+
+.fixed-height {
+  min-height: 95px;
 }
 
 

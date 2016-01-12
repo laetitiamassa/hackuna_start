@@ -25,12 +25,20 @@ apprenez comment
       <div class="panel panel-default">
         <%= image_tag course.illustration.url(:medium) %>
         <div class="panel-body">
+          <div class="fixed-height">
           <b><%= link_to course.name, course %></b>
           <hr>
-          <%= truncate(course.short_description, length: 50) %>
+          <%= truncate(course.short_description, length: 100) %>
         </div>
-        <div class="panel-footer">
-          <%= course.price %> €
+        <hr>
+          <% if current_user.is_student?(course) %>
+          <div class="hkncolor">
+          <%= link_to "Poursuivre le cours", course, class: "btn btn-default btn-lg btn-block"  %>
+        </div>
+          <% else %>
+          <%= link_to "Découvrir ce cours", course, class: "btn btn-primary btn-lg btn-block"  %>
+          <% end %>
+          
         </div>
       </div>
     </div>
