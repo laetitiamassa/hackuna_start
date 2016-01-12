@@ -4,8 +4,8 @@
 <% end %>
 
 <%= content_for :page_title do %>
-<%= @course.name %>
-<br><small><%= @course.short_name %></small>
+<div class="main_title"><%= @course.name %></div>
+<div class="sub_title"><small><%= @course.short_name %></small></div>
 <% end %>
 
 <% unless user_signed_in? %>
