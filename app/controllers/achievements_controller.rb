@@ -1,5 +1,6 @@
 class AchievementsController < ApplicationController
   before_action :set_achievement, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:edit, :update, :index]
 
   # GET /achievements
   # GET /achievements.json

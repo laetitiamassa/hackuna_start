@@ -6,7 +6,8 @@
 <%= content_for :page_title do %>
 <%= @course.name %>
 <% end %>
-<% if user_signed_in? %>
+
+<% if current_user.is_student?(@course) %>
 <!-- si inscrit -->
 <h2 class="page-header">
 	Leçons
@@ -34,6 +35,7 @@
 <% else %>
 
 <!-- si pas inscrit -->
+
 
 
 
@@ -68,8 +70,11 @@
 			</div>
 		</div>
 
+		
+
 		<h1>
-			<%= link_to "S'inscrire à ce cours", "#", class: "btn btn-success btn-lg btn-block" %>
+			<%= link_to "S'inscrire à ce cours", course_path(@course, anchor: "payment"), class: "btn btn-success btn-lg btn-block" %>
+
 		</h1>
 
 
@@ -81,14 +86,38 @@
 
 	<div class="col-md-4">
 		<div class="panel panel-default">
-			<div class="panel-body">
+			<div class="panel-body" id="payment">
 
 				<h1 class="text-center"><i>
 					<small>Accès à vie : <%= @course.price %> €</small>
 				</i></h1>
+				<hr>
+
+				<div class="text-center">
+				<%= form_tag buy_path(id: @course.id) do %>
+ 
+				    <% if flash[:error].present? %>
+				      <div id="error_explanation">
+				        <p><%= flash[:error] %></p>
+				      </div>
+				    <% end %>
+				    
+				  
+
+				  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+				          data-email= "<%= current_user.email %>"
+				    	  data-name="Hackuna"
+				          data-description="<%= @course.short_name %>"
+				          data-currency="eur"
+				          data-amount="<%= @course.price*100 %>"
+				          data-locale="auto">
+				    </script>
+				<% end %>
+			</div>
 
 
-				<%= link_to "S'inscrire", "#", class: "btn btn-success btn-lg btn-block" %>
+				<!--<%= link_to "S'inscrire", "#", class: "btn btn-success btn-lg btn-block" %>-->
 			</div>
 		</div>
 		<div class="panel panel-default">

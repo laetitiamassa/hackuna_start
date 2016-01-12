@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :courses, :foreign_key => "teacher_id"
   has_many :achievements
+  has_many :subscriptions, :foreign_key => "subscriber_id"
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,18 +32,18 @@ class User < ActiveRecord::Base
   end
 
   def progress(course)
-   
       achieved_lessons_count(course) * 100 / course.lessons.count
-  
   end
 
   def has_completed?(course)
- 
       achieved_lessons_count(course) == course.lessons.count
-    
+  end
+
+  def is_student?(course)
+    self.subscriptions.where(:course_id => course.id).any?
   end
 
   def is_admin
-    email == "lol@lol.com"
+    email == "lol1@lol.com"
   end
 end

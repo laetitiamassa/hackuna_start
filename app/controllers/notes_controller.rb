@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:show, :new, :create, :edit, :update, :index]
 
   # GET /notes
   # GET /notes.json

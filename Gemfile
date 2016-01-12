@@ -28,6 +28,8 @@ gem 'rails-bootstrap-markdown'
 gem 'redcarpet', '~> 3.1'
 gem "auto_html", '~> 1.6.4'
 
+gem 'stripe'
+
 
 
 

@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:new, :create, :edit, :update]
 
   # GET /courses
   # GET /courses.json
@@ -11,6 +12,8 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @lessons = @course.lessons.order("nr ASC")
+    @course = Course.find_by!(id: params[:id])
+    @subscription = @course.subscriptions.build(:subscriber_id => current_user.id)
   end
 
   # GET /courses/new
@@ -70,6 +73,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :price, :teacher_id, :target, :outcome, :prerequis, :illustration)
+      params.require(:course).permit(:name, :description, :price, :teacher_id, :target, :outcome, :prerequis, :illustration, :short_name, :short_description)
     end
 end

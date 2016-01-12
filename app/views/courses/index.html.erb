@@ -27,7 +27,7 @@ apprenez comment
         <div class="panel-body">
           <b><%= link_to course.name, course %></b>
           <hr>
-          <%= course.description %>
+          <%= truncate(course.short_description, length: 50) %>
         </div>
         <div class="panel-footer">
           <%= course.price %> €
