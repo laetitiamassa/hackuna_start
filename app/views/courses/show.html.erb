@@ -5,7 +5,7 @@
 
 <%= content_for :page_title do %>
 <div class="main_title"><%= @course.name %></div>
-<div class="sub_title"><small><%= @course.short_name %></small></div>
+<div class="sub_title"><small><%= @course.short_description %></small></div>
 <% end %>
 
 <% unless user_signed_in? %>
@@ -113,7 +113,7 @@
 					          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
 					          data-email= "<%= current_user.email %>"
 					    	  data-name="Hackuna"
-					          data-description="<%= @course.short_name %>"
+					          data-description="Cours : <%= @course.short_name %>"
 					          data-currency="eur"
 					          data-amount="<%= @course.price*100 %>"
 					          data-locale="auto">
