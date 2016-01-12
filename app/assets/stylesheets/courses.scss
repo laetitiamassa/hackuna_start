@@ -1,3 +1,85 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media (max-width: 480px) {
+  .page_title {
+    top: 20px;
+  	left: 90px;
+  	padding-left: 10px;
+  	font-size: 1.5em;
+  	line-height: 25px;
+  	border-left: solid 1px #16a085;
+  }
+
+  .page_title_unlogged { 
+  	top: 90px;
+  	left: 70px;
+  	padding-left: 10px;
+  	font-size: 1.5em;
+  	line-height: 25px;
+  	border-left: solid 1px #16a085;
+  }
+
+}
+
+@media (min-width: 480px) {
+  .page_title {
+    top: 50px;
+  	left: 90px;
+  	padding-left: 10px;
+  	font-size: 2.5em;
+  	line-height: 40px;
+  	border-left: solid 2px #16a085;
+  }
+
+  .page_title_unlogged { 
+  	top: 100px;
+  	left: 70px;
+  	padding-left: 10px;
+  	font-size: 2.5em;
+  	line-height: 40px;
+  	border-left: solid 2px #16a085;
+  }
+  
+}
+
+@media (min-width: 900px) {
+  .page_title {
+    top: 70px;
+  	left: 90px;
+  	padding-left: 10px;
+  	font-size: 3.5em;
+  	line-height: 50px;
+  	border-left: solid 5px #16a085;
+  }
+
+  .page_title_unlogged { 
+  	top: 150px;
+  	left: 70px;
+  	padding-left: 10px;
+  	font-size: 3.5em;
+  	line-height: 50px;
+  	border-left: solid 5px #16a085;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page_title {
+    top: 150px;
+  	left: 150px;
+  	padding-left: 20px;
+  	font-size: 4.5em;
+  	line-height: 70px;
+  	border-left: solid 5px #16a085;
+  }
+
+  .page_title_unlogged { 
+  	top: 150px;
+  	left: 100px;
+  	padding-left: 20px;
+  	font-size: 4.5em;
+  	line-height: 70px;
+  	border-left: solid 5px #16a085;
+  }
+}
