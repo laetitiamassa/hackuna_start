@@ -10,5 +10,15 @@
   <%= @subscription.course_id %>
 </p>
 
+<p>
+  <strong>Stripe:</strong>
+  <%= @subscription.stripe_id %>
+</p>
+
+<p>
+  <strong>Charge:</strong>
+  <%= @subscription.charge_id %>
+</p>
+
 <%= link_to 'Edit', edit_subscription_path(@subscription) %> |
 <%= link_to 'Back', subscriptions_path %>

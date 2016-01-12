@@ -7,6 +7,8 @@
     <tr>
       <th>Subscriber</th>
       <th>Course</th>
+      <th>Stripe id</th>
+      <th>Charge id</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= subscription.subscriber_id %></td>
         <td><%= subscription.course_id %></td>
+        <td><%= subscription.stripe_id %></td> -
+        <td><%= subscription.charge_id %></td>
         <td><%= link_to 'Show', subscription %></td>
         <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
         <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>

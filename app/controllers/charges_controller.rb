@@ -24,7 +24,9 @@ class ChargesController < ApplicationController
 	  )
 
 	  @subscription = current_user.subscriptions.create!(
-	  	:course_id => @course.id
+	  	:course_id => @course.id,
+	  	:stripe_id => customer.id,
+	  	:charge_id => charge.id
 	  	)
 
 	  redirect_to :back, notice: 'Félicitations, vous avez dès maintenant accès à vie à ce cours !'
