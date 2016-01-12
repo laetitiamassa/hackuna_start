@@ -13,12 +13,21 @@
   }
 
   .page_title_unlogged { 
-  	top: 90px;
-  	left: 70px;
+  	top: 100px;
+  	left: 40px;
   	padding-left: 10px;
   	font-size: 1.5em;
   	line-height: 25px;
   	border-left: solid 1px #16a085;
+  }
+
+  .start_button {
+	  top: 95px;
+	  left: 230px;
+	}
+  .btn-transparent {
+  	font-size: 0.4em;
+  	border: solid 1px #16a085;
   }
 
 }
@@ -34,12 +43,20 @@
   }
 
   .page_title_unlogged { 
-  	top: 100px;
+  	top: 140px;
   	left: 70px;
   	padding-left: 10px;
   	font-size: 2.5em;
   	line-height: 40px;
   	border-left: solid 2px #16a085;
+  }
+
+  .start_button {
+	  top: 150px;
+	  left: 500px;
+	}
+  .btn-transparent {
+  	font-size: 0.7em;
   }
   
 }
@@ -62,6 +79,11 @@
   	line-height: 50px;
   	border-left: solid 5px #16a085;
   }
+
+   .start_button {
+	  top: 180px;
+	  left: 650px;
+	}
 }
 
 @media (min-width: 1200px) {
