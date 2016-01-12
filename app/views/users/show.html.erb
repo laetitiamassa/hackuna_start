@@ -1,8 +1,9 @@
 <div class="top-profile text-center">
 	<%= image_tag @user.avatar.url(:thumb), class: "img-circle" %>
 	<h3><%= @user.full_name %>
-		<br><small><%= @user.baseline %></small>
-		
+		<br><small><%= @user.baseline %>
+		<br><%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-default btn-sm" %>
+		</small>
 	</h3>
 
 		<%= link_to "#{@user.github}" do %>
@@ -13,19 +14,30 @@
 		<%= link_to "#{@user.website}" do %>
 		<%= content_tag(:i, "", class: "fa fa-lg fa-link fa-primary") %>
 		<% end %>
+
 </div>
 
 <hr>
 
-	<div class="row">
+<div class="row">
+
 		<div class="col-md-8 col-md-offset-2">
+	
 			<p><%= markdown(@user.bio) if @user.bio %></p>
-<hr>
-			<% if current_user == @user %>
+			<hr>
+			
 
 				<ul class="list-group">
-					<h3 class="text-center">Vos progrès</h3>
+
+					<h3 class="text-center">
+						<% if current_user == @user %>
+						Vos progrès
+						<% else %>
+						Les progrès de <%= @user.full_name %>
+						<% end %>
+					</h3>
 					<% @courses.each do |course| %>
+						<% if @user.is_student?(course) %>
 						<li class="list-group-item">
 							<p class="lead">
 								<%= link_to course.name, course %> 
@@ -41,10 +53,11 @@
 							  </div>
 							</div>
 						</li>
+						<% end %>
 					<% end %>
 				</ul>
 
-			<% end %>
-
 		</div>
+		
+
 	</div>
