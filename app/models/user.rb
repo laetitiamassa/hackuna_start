@@ -44,6 +44,6 @@ class User < ActiveRecord::Base
   end
 
   def is_admin
-    email == "lol@lol.com"
+    email == "laetitiamassa@gmail.com"
   end
 end
