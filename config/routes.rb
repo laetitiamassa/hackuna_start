@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   authenticated :user do
     #root to: 'courses#index', :as => "authenticated_root"
     #in the meantime, a welcome route
-    root to: 'visitors#wait', :as => "authenticated_root"
+    root to: 'courses#index', :as => "authenticated_root"
   end
 
   root to: 'visitors#home'
