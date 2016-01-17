@@ -26,9 +26,17 @@ class Lesson < ActiveRecord::Base
     	(duration / 60).round
     end
 
-    def duration_in_hours
-    	(duration / 1.hour).round
-    end
+    def seconds_left
+		duration - (duration_in_minutes*60)
+	end
+
+	def display_duration
+		if duration_in_minutes >= 1
+			"#{duration_in_minutes}'#{seconds_left}''"
+		else
+			"#{duration_in_seconds}''"
+		end
+	end
 
 
 end

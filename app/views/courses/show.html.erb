@@ -18,7 +18,7 @@
 <% if current_user && current_user.is_student?(@course) %>
 <!-- si inscrit -->
 <h2 class="page-header">
-	Leçons <small>(<%= @course.duration_in_hours %> h)</small>
+	Leçons <small>(<i><%= @course.display_duration %></i>)</small>
 	<%= link_to "Ajouter une nouvelle leçon", new_lesson_path, class: "btn btn-primary pull-right" if current_user.is_admin %>
 </h2>
 
@@ -30,7 +30,9 @@
 	<h4>
 		<small><%= lesson.nr %> - </small>
 		<%= link_to lesson.name, lesson %>
-		<small>(<%= lesson.duration_in_minutes if lesson.duration %> min)</small>
+		<small>
+			(<i><%= lesson.display_duration if lesson.duration %></i>)
+		</small>
 		<% if current_user.has_achieved?(lesson) %>
 		<i class="fa fa-check-circle-o fa-primary pull-right"></i>
 		<% end %>

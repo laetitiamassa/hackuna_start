@@ -24,5 +24,17 @@ class Course < ActiveRecord::Base
 	def duration_in_hours
 		duration / 1.hour
 	end
+
+	def minutes_left
+		duration_in_minutes - (duration_in_hours*60)
+	end
+
+	def display_duration
+		if duration_in_hours >= 1
+			"#{duration_in_hours}h#{minutes_left}"
+		else
+			"#{duration_in_minutes} min"
+		end
+	end
 	
 end
