@@ -22,5 +22,13 @@ class Lesson < ActiveRecord::Base
       simple_format
     end
 
+    def duration_in_minutes
+    	(duration / 60).round
+    end
+
+    def duration_in_hours
+    	(duration / 1.hour).round
+    end
+
 
 end
