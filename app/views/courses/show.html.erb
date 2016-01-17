@@ -6,6 +6,10 @@ Hackuna | <%= @course.short_name %>
 <%= @course.short_description %>
 <% end %>
 
+<%= content_for :fb_image do %>
+<%= @course.illustration.url %>
+<% end %>
+
 <%= content_for :image do %>
 <%= image_tag @course.illustration.url(:head) %>
 <% end %>
