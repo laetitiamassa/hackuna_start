@@ -3,7 +3,9 @@ class Lesson < ActiveRecord::Base
 	has_many :notes
 	has_many :achievements, :as => :achievable
 
-
+	def to_param
+	    "#{id} #{name}".parameterize
+	end
 
 	def previous
 	  Lesson.where(:course_id => self.course_id).where(["nr < ?", nr]).last

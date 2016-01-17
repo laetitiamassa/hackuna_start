@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Hackuna Start" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Hackuna Start" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Hackuna | Cours en ligne" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Hackuna est un concentré de tout ce que j'aurais voulu savoir il y a quelques années, avant d'entamer mon aventure entrepreneuriale tech. Ou comment générer des revenus, sans capital de départ." %>">
+    <meta name="keywords" content="cours, online, web development, entrepreneuriat, entrepreneurship, ruby on rails, code, learn, marketing, startup, business, bootstrap">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>

@@ -7,6 +7,10 @@ class Course < ActiveRecord::Base
 	has_attached_file :illustration, styles: { head: "1600x550#", slice: "800x200#", medium: "800x400#", thumb: "300x100#" }, default_url: ":style/missing_illustration.png"
 	validates_attachment_content_type :illustration, content_type: /\Aimage\/.*\Z/
 
+	def to_param
+	    "#{id} #{short_name}".parameterize
+	end
+
 	def duration
 		duration = 0
 		self.lessons.each do |lesson|

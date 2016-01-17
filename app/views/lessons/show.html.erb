@@ -1,3 +1,7 @@
+<% content_for :title do %>
+Hackuna | <%= @lesson.name %>
+<% end %>
+
 <div class="course_title">
   <div class="text-right">
     Le cours : <%= link_to @lesson.course.name, course_path(@lesson.course) %>
